@@ -1,19 +1,10 @@
-## How to Install Magento 2.2.5 Patches
+## How to Install Magento 2.* Patches
 
-### ✓ Method #1. Composer method (Recommend)
-Install the Magento 2.2.5 Patches via composer is never easier.
-
-**Install Magento 2.2.5 patches**:
+**Install Magento 2.x patches**:
 
 ```
-composer config repositories.magento-2-2-5-patches vcs https://github.com/serzhik/magento-2-2-5-patches.git
-composer require serzhik/magento-2-2-5-patches@stable
+composer config repositories.magento2-patches vcs https://github.com/serzhik/magento2-patches.git
+composer require serzhik/magento2-patches
 ```
 
 
-**Update Magento 2.2.5 patches**:
-
-```
-composer config repositories.magento-2-2-5-patches vcs https://github.com/serzhik/magento-2-2-5-patches.git
-composer update serzhik/magento-2-2-5-patches@stable
-```
