@@ -1,0 +1,59 @@
+{
+  "name": "serzhik/magento2-patches",
+  "description": "Patches for Magento 2.*",
+  "type": "project",
+  "version": "0.1.0",
+  "license": [
+    "proprietary"
+  ],
+  "authors": [
+    {
+      "email": "sergiy.koval@gmail.com",
+      "name": "Serhii Koval"
+    }
+  ],
+  "require": {
+    "vaimo/composer-patches": "~4.7.0",
+    "magento/product-community-edition": "*"
+  },
+  "config": {
+    "preferred-install": "source"
+  },
+  "extra": {
+    "patches": {
+      "magento/product-community-edition": {
+        "Fix mass action filter": {
+            "source": "patches/PRODUCTS_MASS_DELETE_FIX.patch",
+            "version": [
+                ">=2.1.9 <2.1.15",
+                ">=2.2.1 <2.2.6"
+            ]
+        },
+        "Attribute cache fix": {
+            "source": "patches/ATTRIBUTE_CACHE_FIX.patch",
+            "version": "=2.2.5"
+        },
+        "Attributes visibility": {
+            "source": "patches/ATTRIBUTES_VISIBILITY_PATCH.patch",
+            "version": "=2.2.5"
+        },
+        "Length header": {
+            "source": "patches/LENGTH_HEADER_FIX.patch",
+            "version": "=2.2.5"
+        },
+        "Logout": {
+            "source": "patches/LOGOUT_FIX.patch",
+            "version": "=2.2.5"
+        },
+        "MAGETWO-91807": {
+            "source": "patches/MAGETWO-91807.patch",
+            "version": "=2.2.5"
+        },
+        "Upgrade data performance fix": {
+            "source": "patches/UPGRADE_DATA_PERFORMANCE_FIX.patch",
+            "version": "=2.2.5"
+        }
+      }
+    }
+  }
+}

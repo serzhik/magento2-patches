@@ -1,0 +1,17 @@
+diff --git a/vendor/magento/module-catalog/Block/Product/View/Attributes.php b/vendor/magento/module-catalog/Block/Product/View/Attributes.php
+index b353e47..2207afe 100644
+--- a/vendor/magento/module-catalog/Block/Product/View/Attributes.php
++++ b/vendor/magento/module-catalog/Block/Product/View/Attributes.php
+@@ -83,8 +83,10 @@ class Attributes extends \Magento\Framework\View\Element\Template
+             if ($attribute->getIsVisibleOnFront() && !in_array($attribute->getAttributeCode(), $excludeAttr)) {
+                 $value = $attribute->getFrontend()->getValue($product);
+ 
+-                if ($value instanceof Phrase) {
+-                    $value = (string)$value;
++                if (!$product->hasData($attribute->getAttributeCode())) {
++                    $value = __('N/A');
++                } elseif ((string)$value == '') {
++                    $value = __('No');
+                 } elseif ($attribute->getFrontendInput() == 'price' && is_string($value)) {
+                     $value = $this->priceCurrency->convertAndFormat($value);
+                 }

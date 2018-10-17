@@ -1,0 +1,39 @@
+Index: SessionManager.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- /vendor/magento/framework/Session/SessionManager.php	(date 1537968573000)
++++ /vendor/magento/framework/Session/SessionManager.php	(date 1537968736000)
+@@ -500,10 +500,28 @@
+         if (headers_sent()) {
+             return $this;
+         }
+-
+-        $this->isSessionExists() ? session_regenerate_id(true) : session_start();
++        if ($this->isSessionExists()) {
++            // Regenerate the session
++            session_regenerate_id();
++            $newSessionId = session_id();
++            $_SESSION['new_session_id'] = $newSessionId;
++            // Set destroy timestamp
++            $_SESSION['destroyed'] = time();
++            // Write and close current session;
++            session_commit();
++            // Called after destroy()
++            $oldSession = $_SESSION;
++            // Start session with new session ID
++            session_id($newSessionId);
++            session_start();
++            $_SESSION = $oldSession;
++            // New session does not need them
++            unset($_SESSION['destroyed']);
++            unset($_SESSION['new_session_id']);
++        } else {
++            session_start();
++        }
+         $this->storage->init(isset($_SESSION) ? $_SESSION : []);
+-
+         if ($this->sessionConfig->getUseCookies()) {
+             $this->clearSubDomainSessionCookie();
+         }

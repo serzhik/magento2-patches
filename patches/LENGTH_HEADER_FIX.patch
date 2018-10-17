@@ -1,0 +1,13 @@
+diff --git a/vendor/magento/framework/App/Response/Http/FileFactory.php b/vendor/magento/framework/App/Response/Http/FileFactory.php
+index ca9ffc4..23459bc 100644
+--- a/vendor/magento/framework/App/Response/Http/FileFactory.php
++++ b/vendor/magento/framework/App/Response/Http/FileFactory.php
+@@ -76,7 +76,7 @@ class FileFactory
+             ->setHeader('Pragma', 'public', true)
+             ->setHeader('Cache-Control', 'must-revalidate, post-check=0, pre-check=0', true)
+             ->setHeader('Content-type', $contentType, true)
+-            ->setHeader('Content-Length', $contentLength === null ? strlen($content) : $contentLength, true)
++            //->setHeader('Content-Length', $contentLength === null ? strlen($content) : $contentLength, true)
+             ->setHeader('Content-Disposition', 'attachment; filename="' . $fileName . '"', true)
+             ->setHeader('Last-Modified', date('r'), true);
+ 

@@ -1,0 +1,18 @@
+Index: AbstractBackend.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- /vendor/magento/module-eav/Model/Entity/Attribute/Backend/AbstractBackend.php	(date 1538049878000)
++++ /vendor/magento/module-eav/Model/Entity/Attribute/Backend/AbstractBackend.php	(date 1538049948000)
+@@ -237,8 +237,8 @@
+             && $attribute->isValueEmpty($value)
+             && $attribute->isValueEmpty($attribute->getDefaultValue())
+         ) {
+-            $label = $attribute->getFrontend()->getLabel();
+-            throw new LocalizedException(__('The value of attribute "%1" must be set', $label));
++            //$label = $attribute->getFrontend()->getLabel();
++            //throw new LocalizedException(__('The value of attribute "%1" must be set', $label));
+         }
+ 
+         if ($attribute->getIsUnique()

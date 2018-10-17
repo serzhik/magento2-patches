@@ -1,0 +1,45 @@
+diff --git a/vendor/magento/module-catalog/Controller/Adminhtml/Product/MassDelete.php b/vendor/magento/module-catalog/Controller/Adminhtml/Product/MassDelete.php
+index 2402fb213cd..366356597fd 100644
+--- a/vendor/magento/module-catalog/Controller/Adminhtml/Product/MassDelete.php
++++ b/vendor/magento/module-catalog/Controller/Adminhtml/Product/MassDelete.php
+@@ -64,9 +64,12 @@ class MassDelete extends \Magento\Catalog\Controller\Adminhtml\Product
+             $this->productRepository->delete($product);
+             $productDeleted++;
+         }
+-        $this->messageManager->addSuccess(
+-            __('A total of %1 record(s) have been deleted.', $productDeleted)
+-        );
++
++        if ($productDeleted) {
++            $this->messageManager->addSuccess(
++                __('A total of %1 record(s) have been deleted.', $productDeleted)
++            );
++        }
+
+         return $this->resultFactory->create(ResultFactory::TYPE_REDIRECT)->setPath('catalog/*/index');
+     }
+diff --git a/vendor/magento/module-ui/Component/MassAction/Filter.php b/vendor/magento/module-ui/Component/MassAction/Filter.php
+index 6b089233c21..483cf1ed154 100644
+--- a/vendor/magento/module-ui/Component/MassAction/Filter.php
++++ b/vendor/magento/module-ui/Component/MassAction/Filter.php
+@@ -98,14 +98,12 @@ class Filter
+                 throw new LocalizedException(__('Please select item(s).'));
+             }
+         }
+-        /** @var \Magento\Customer\Model\ResourceModel\Customer\Collection $collection */
+-        $idsArray = $this->getFilterIds();
+-        if (!empty($idsArray)) {
+-            $collection->addFieldToFilter(
+-                $collection->getIdFieldName(),
+-                ['in' => $idsArray]
+-            );
+-        }
++
++        $collection->addFieldToFilter(
++            $collection->getIdFieldName(),
++            ['in' => $this->getFilterIds()]
++        );
++
+         return $collection;
+     }
+
