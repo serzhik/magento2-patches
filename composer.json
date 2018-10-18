@@ -2,7 +2,7 @@
   "name": "serzhik/magento2-patches",
   "description": "Patches for Magento 2.*",
   "type": "project",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "license": [
     "proprietary"
   ],
@@ -51,6 +51,10 @@
         },
         "Upgrade data performance fix": {
             "source": "patches/UPGRADE_DATA_PERFORMANCE_FIX.patch",
+            "version": "=2.2.5"
+        },
+        "MAGETWO-93036": {
+            "source": "patches/CE-MAGETWO-93036-2018-07-02-07-06-53.patch",
             "version": "=2.2.5"
         }
       }
