@@ -2,7 +2,7 @@
   "name": "serzhik/magento2-patches",
   "description": "Patches for Magento 2.*",
   "type": "project",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "license": [
     "proprietary"
   ],
@@ -55,6 +55,10 @@
         },
         "MAGETWO-93036": {
             "source": "patches/CE-MAGETWO-93036-2018-07-02-07-06-53.patch",
+            "version": "=2.2.5"
+        },
+        "MAGETWO-93083": {
+            "source": "patches/CE-MAGETWO-93083-COMPOSER-2018-07-16-03-39-02.patch",
             "version": "=2.2.5"
         }
       }

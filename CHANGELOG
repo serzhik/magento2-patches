@@ -1,3 +1,8 @@
+## [0.1.2] - 2018-10-18
+### Added
+- CE-MAGETWO-93083-COMPOSER-2018-07-16-03-39-02.patch
+This patch provides performance optimization for retrieving product attributes in Magento 2.2.5
+
 ## [0.1.1] - 2018-10-18
 ### Added
 - CE-MAGETWO-93036-2018-07-02-07-06-53.patch
